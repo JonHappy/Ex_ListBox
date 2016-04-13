@@ -19,12 +19,21 @@
                 left: 400px;
                 background: #ccc;
             }
+            #lbr{
+                height: 20px;
+                width: 400px;
+                position: absolute;
+                top: 60px;
+                left: 900px;
+                background: #ccc;
+            }
         </style>
     </head>
     <body>
 
-    <my-listbox id="lb"   data-handler_callback="yyy32" data-placeholder="поиск" set="{ss:88}"></my-listbox>
+    <my-listbox id="lb"   data-handler_callback="yyy32" data-placeholder="поиск" set='{"n_row":5}'></my-listbox>
 
+    <my-listbox id="lbr"   data-handler_callback="yyy32" data-placeholder="поиск" set='{"n_row":13}'></my-listbox>
     <script>
 
         function yyy32(p) {

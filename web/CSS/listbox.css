@@ -1,11 +1,6 @@
 
 .listbox{
-    /* padding-top: 15px; */
     width: 368px;
-    /* position: absolute; */
-    /* top: 60px; */
-    /* left: 60px; */
-    /* background: transparent; */
 }
 
 input{
@@ -34,7 +29,7 @@ img{
 }
 
 .div_list{
-    max-height: 232px;
+    /*max-height: 232px;*/
     cursor: default;
     overflow-y: auto;
     overflow-x: hidden;
