@@ -1,4 +1,4 @@
-/* global con, HTMLElement */
+/* global con, HTMLElement, evt, tt */
 "use strict";
 
 
@@ -74,6 +74,15 @@ document.registerElement("my-listbox", {
                                 window[callback](inp.attr('data-id'));
                                 ev.data.obj.event_hello.detail.v = inp.attr('data-id');
                                 ev.data.obj.obj.dispatchEvent(ev.data.obj.event_hello);
+
+
+                                var t = document.getElementsByClassName('ff');
+                                [].forEach.call(t,function (r){
+                                   r.dispatchEvent(evt);
+                                });
+
+
+
                             } catch (er) {
                                 console.log('case 9;13');
                                 console.log(er);
