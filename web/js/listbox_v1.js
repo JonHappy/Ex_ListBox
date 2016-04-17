@@ -17,6 +17,10 @@ document.registerElement("my-listbox", {
         },
         attachedCallback: function () {
             this.obj = document.getElementById(this.id);
+
+            this.event_hello = new CustomEvent('hello', {
+                detail: {v: ""}
+            });
             var ob = $(this.obj);
             ob.attr({class: 'listbox'});
             this.callback = this.getAttribute('data-handler_callback');
@@ -33,8 +37,8 @@ document.registerElement("my-listbox", {
             var obInput = $(this.shadow_root.getElementById('in'));
             var divlist = $(this.shadow_root.getElementById('div_list'));
             divlist.css('width', ob.outerWidth());
-            divlist.css('max-height', n_row*21);
-            obInput.one('focus', function () {
+            divlist.css('max-height', n_row * 21);
+            obInput.one('focus', {obj: this}, function (ev) {
                 var inp = $(this);
                 $(this).bind('keydown', function (event) {
                     var key;
@@ -56,6 +60,7 @@ document.registerElement("my-listbox", {
                             divlist.empty();
                             break;
                         case 13:
+
                         case 9:
                             divlist.find("table").find("td").unbind("click").unbind("hover");
                             divlist.unbind('hover');
@@ -67,6 +72,8 @@ document.registerElement("my-listbox", {
                             divlist.empty().css('display', 'none');
                             try {
                                 window[callback](inp.attr('data-id'));
+                                ev.data.obj.event_hello.detail.v = inp.attr('data-id');
+                                ev.data.obj.obj.dispatchEvent(ev.data.obj.event_hello);
                             } catch (er) {
                                 console.log('case 9;13');
                                 console.log(er);
@@ -150,7 +157,7 @@ document.registerElement("my-listbox", {
             divlist.append(p);
             divlist.css('display', 'block');
 
-            $(divlist).find('td').on('click', function () {
+            $(divlist).find('td').on('click', {obj: this.obj}, function (ev) {
                 inp.attr("data-fn", $(this).attr("data-fn"));
                 inp.attr("data-old", $(this).find("td").html());
                 inp.attr("data-id", $(this).attr("data-id"));
@@ -160,7 +167,9 @@ document.registerElement("my-listbox", {
                 divlist.css('display', 'none');
                 inp.focus();
                 try {
-                    window [callback]($(this).attr("data-id"));
+                    window[callback]($(this).attr("data-id"));
+                    ev.data.obj.event_hello.detail.v = $(this).attr("data-id");
+                    ev.data.obj.obj.dispatchEvent(ev.data.obj.event_hello);
                 } catch (er) {
                     console.log(er);
                     console.log(callback);

@@ -30,16 +30,25 @@
         </style>
     </head>
     <body>
+<div id="tt"></div>
 
     <my-listbox id="lb"   data-handler_callback="yyy32" data-placeholder="поиск" set='{"n_row":5}'></my-listbox>
 
     <my-listbox id="lbr"   data-handler_callback="yyy32" data-placeholder="поиск" set='{"n_row":13}'></my-listbox>
+    
     <script>
-
+        
         function yyy32(p) {
             console.log(p);
-        }
-    </script>
 
+        }
+        
+        lb.addEventListener("hello", function (event) {
+            console.log(event.detail.v);
+            $('#tt').html(event.detail.v);
+        }, false);
+
+    </script>
+    
 </body>
 </html>
