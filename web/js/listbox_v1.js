@@ -1,4 +1,4 @@
-/* global con, HTMLElement, evt, tt */
+/* global con, HTMLElement, evt */
 "use strict";
 
 
@@ -18,9 +18,11 @@ document.registerElement("my-listbox", {
         attachedCallback: function () {
             this.obj = document.getElementById(this.id);
 
-            this.event_hello = new CustomEvent('hello', {
+            this.evt = new CustomEvent('xxxxx5', {
                 detail: {v: ""}
-            });
+            }, {bubbles: true, cancelable: true});
+
+
             var ob = $(this.obj);
             ob.attr({class: 'listbox'});
             this.callback = this.getAttribute('data-handler_callback');
@@ -70,24 +72,7 @@ document.registerElement("my-listbox", {
                                 'data-old': td.html()
                             });
                             divlist.empty().css('display', 'none');
-                            try {
-                                window[callback](inp.attr('data-id'));
-                                ev.data.obj.event_hello.detail.v = inp.attr('data-id');
-                                ev.data.obj.obj.dispatchEvent(ev.data.obj.event_hello);
-
-
-                                var t = document.getElementsByClassName('ff');
-                                [].forEach.call(t,function (r){
-                                   r.dispatchEvent(evt);
-                                });
-
-
-
-                            } catch (er) {
-                                console.log('case 9;13');
-                                console.log(er);
-                                console.log(callback);
-                            }
+                            ev.data.obj.ready(inp.attr('data-id'), ev.data.obj.evt, callback);
                             break;
                         case 38://up
                             var n = parseInt(inp.attr("data-fn"));
@@ -157,6 +142,13 @@ document.registerElement("my-listbox", {
 
             });
         },
+        ready: function (id, evt, callback) {
+            var t = document.getElementsByClassName('ff');
+            [].forEach.call(t, function (r) {
+                r.dispatchEvent(evt);
+            });
+            window[callback](id);
+        },
         expl: function (p) {
             var callback = this.callback;
             var inp = $(this.shadow_root.getElementById('in'));
@@ -175,14 +167,7 @@ document.registerElement("my-listbox", {
                 divlist.empty();
                 divlist.css('display', 'none');
                 inp.focus();
-                try {
-                    window[callback]($(this).attr("data-id"));
-                    ev.data.obj.event_hello.detail.v = $(this).attr("data-id");
-                    ev.data.obj.obj.dispatchEvent(ev.data.obj.event_hello);
-                } catch (er) {
-                    console.log(er);
-                    console.log(callback);
-                }
+                ev.data.obj.ready(inp.attr('data-id'), ev.data.obj.evt, callback);
             });
             $(this.shadow_root.getElementById('xxx')).find('td').attr('onmouseover', this.obj.id + '.td_mouseover(this);');
 
