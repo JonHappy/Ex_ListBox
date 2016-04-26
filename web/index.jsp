@@ -38,14 +38,13 @@
     <my-listbox id="lbr"   data-handler_callback="yyy32" data-placeholder="поиск" set='{"n_row":13}'></my-listbox>
 
     <script>
-        var evt = new CustomEvent('xxxxx5',{bubbles: true, cancelable: true});
         function yyy32(p) {
             console.log(p);
 
         }
-        document.getElementById('twt').addEventListener("xxxxx5", function (event) {
+        document.getElementById('tt').addEventListener("xxxxx5", function (event) {
 //            console.log(event.detail.v);
-//            $('#tt').html(event.detail.v);
+            $('#tt').html(event.detail.v);
             console.log('9999999999999999');
         });
 
