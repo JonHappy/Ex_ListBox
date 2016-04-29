@@ -58,8 +58,7 @@ document.registerElement("my-listbox", {
                                 'data-fn': '0'
                             });
                             inp.val('');
-                            divlist.css('display', 'none');
-                            divlist.empty();
+                            divlist.css('display', 'none').empty();
                             break;
                         case 13:
 
@@ -153,19 +152,17 @@ document.registerElement("my-listbox", {
         expl: function (p) {
             var callback = this.callback;
             var inp = $(this.shadow_root.getElementById('in'));
-            var divlist = $(this.shadow_root.getElementById('div_list'));
             inp.attr("data-fn", 0);
+            var divlist = $(this.shadow_root.getElementById('div_list'));
             divlist.empty().append(p).css('display', 'block');
 
             $(divlist).find('td').on('click', {obj: this.obj}, function (ev) {
                 inp.attr("data-fn", $(this).attr("data-fn"));
                 inp.attr("data-old", $(this).find("td").html());
                 inp.attr("data-id", $(this).attr("data-id"));
-                divlist.find("table").find("tr").unbind("click");
-                divlist.unbind('hover');
-                divlist.empty();
-                divlist.css('display', 'none');
                 inp.focus();
+                divlist.find("table").find("tr").unbind("click");
+                divlist.unbind('hover').empty().css('display', 'none');
                 ev.data.obj.ready(inp.attr('data-id'), ev.data.obj.evt, callback);
             });
             $(this.shadow_root.getElementById('xxx')).find('td').attr('onmouseover', this.obj.id + '.td_mouseover(this);');
