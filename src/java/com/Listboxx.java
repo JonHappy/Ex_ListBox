@@ -55,7 +55,7 @@ public class Listboxx extends HttpServlet {
                 Statement stmt = con.createStatement();) {
             rs = stmt.executeQuery("SELECT goods.id, goods.name FROM goods WHERE " + sy.toString() + " limit 15");
 
-            sbb.append(String.format(s[1] + "." + s[2] + "|"));
+            sbb.append(String.format("%1$S.%2$S|", s[1], s[2]));
             if (rs != null) {
                 sbb.append(list_names(rs).toString());
             }
@@ -71,7 +71,8 @@ public class Listboxx extends HttpServlet {
             sbb.append("<table id='xxx'>");
             int n = 0;
             while (rs.next()) {
-                sbb.append(String.format("<tr class='tr'><td  data-fn='%1$S' data-id='%2$S'>%3$S</td></tr> ", ++n, rs.getString("id"), rs.getString("name")));
+                sbb.append(String.format("<tr class='tr'><td  data-fn='%1$S' data-id='%2$S'>%3$S</td></tr> ",
+                        ++n, rs.getString("id"), rs.getString("name")));
             }
             sbb.append("</table>");
             if (n == 0) {
