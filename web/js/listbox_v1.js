@@ -155,9 +155,7 @@ document.registerElement("my-listbox", {
             var inp = $(this.shadow_root.getElementById('in'));
             var divlist = $(this.shadow_root.getElementById('div_list'));
             inp.attr("data-fn", 0);
-            divlist.empty();
-            divlist.append(p);
-            divlist.css('display', 'block');
+            divlist.empty().append(p).css('display', 'block');
 
             $(divlist).find('td').on('click', {obj: this.obj}, function (ev) {
                 inp.attr("data-fn", $(this).attr("data-fn"));
