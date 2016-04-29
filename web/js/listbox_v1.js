@@ -143,6 +143,7 @@ document.registerElement("my-listbox", {
             });
         },
         ready: function (id, evt, callback) {
+             evt.detail.v = id;
             var t = document.getElementsByClassName('ff');
             [].forEach.call(t, function (r) {
                 r.dispatchEvent(evt);
