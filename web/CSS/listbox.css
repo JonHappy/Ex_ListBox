@@ -1,25 +1,36 @@
 
 .listbox{
-    width: 368px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
+img{
+    height: 11px;
+    width: 11px;
+    cursor: pointer;
+    margin-left: -5px;
+}
+
+button{
+    align-items: center;
+}
+
+
 input{
-    width: calc(100% - 18px);
+    width: calc(100% - 44px);
     border: none;
-    outline:none; 
+    outline:none;
     box-sizing:border-box;
     padding-left: 6px;
     background: transparent;
-
     border: 1px solid #d0d0d0;
 }
 
 input:active, textarea:active { outline:none; }
 
-img{
-    height: 100%;
-    width: 100%;
-}
+
 .expand{
     display: none;
     vertical-align: middle;
@@ -29,29 +40,28 @@ img{
 }
 
 .div_list{
-    /*max-height: 232px;*/
     cursor: default;
     overflow-y: auto;
     overflow-x: hidden;
     display: none;
     background: skyblue;
-    /* width: calc(100% - 16px); */
-    position: absolute;
+    position: relative;
     z-index: 100;
-    /*width: 430px;*/
 }
+
 table{
     width: 100%;
-    position: relative; 
+    position: relative;
     border-collapse: collapse;
     cursor: default;
 }
+
 table td{
     border: #dadada solid 1px;
-    padding-left: 4px;  
+    padding-left: 4px;
     width: 100%;
     white-space: nowrap; /*  Отменяем перенос текста */
-    /*    overflow-x:  hidden;  Обрезаем содержимое 
+    /*    overflow-x:  hidden;  Обрезаем содержимое
         text-overflow: ellipsis; Многоточие */
 }
 
@@ -73,14 +83,14 @@ table td:hover{
 
 
 .div_img{
-    width: 40px; 
-    height: 17px; 
+    width: 40px;
+    height: 17px;
     opacity:1;
     position: absolute;
     right: -43px;
     top:12px;
     border-radius: 3px;
-    display: none; 
+    display: none;
 }
 
 button{
