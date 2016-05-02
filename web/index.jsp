@@ -12,12 +12,12 @@
 
         <style>
             #lb{
-                height: 20px;
+                height: 25px;
                 width: 400px;
                 position: absolute;
                 top: 60px;
                 left: 400px;
-                background: #ccc;
+                /*background: #ccc;*/
             }
             #lbr{
                 height: 20px;
@@ -25,14 +25,14 @@
                 position: absolute;
                 top: 60px;
                 left: 900px;
-                background: #ccc;
+                /*background: #ccc;*/
             }
         </style>
     </head>
     <body>
         <div id="tt" class="ff"></div>
         <div id="twt" class="ff"></div>
-
+       
     <my-listbox id="lb"   data-handler_callback="yyy32" data-placeholder="поиск" set='{"n_row":5}'></my-listbox>
 
     <my-listbox id="lbr"   data-handler_callback="yyy32" data-placeholder="поиск" set='{"n_row":13}'></my-listbox>
