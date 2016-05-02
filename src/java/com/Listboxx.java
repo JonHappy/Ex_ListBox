@@ -42,12 +42,13 @@ public class Listboxx extends HttpServlet {
         ResultSet rs;
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-
         String[] s = request.getParameter("name").split("_");
-        String[] st = request.getParameter("value").split(" ");
+
+        String[] st = request.getParameter("value").toLowerCase().replaceAll("%", "\\\\%").split(" ");
+
         StringBuilder sy = new StringBuilder();
         for (String sf : st) {
-            sy.append(" name like '%").append(sf).append("%' and");
+            sy.append(" name like '%").append(sf).append("%' COLLATE utf8_unicode_ci  and");
         }
         sy.setLength(sy.length() - 4);
         StringBuilder sbb = new StringBuilder();
@@ -55,7 +56,7 @@ public class Listboxx extends HttpServlet {
                 Statement stmt = con.createStatement();) {
             rs = stmt.executeQuery("SELECT goods.id, goods.name FROM goods WHERE " + sy.toString() + " limit 15");
 
-            sbb.append(String.format("%1$S.%2$S|", s[1], s[2]));
+            sbb.append(String.format(s[1] + "." + s[2] + "|"));
             if (rs != null) {
                 sbb.append(list_names(rs).toString());
             }
