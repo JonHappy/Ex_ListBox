@@ -13,7 +13,7 @@ document.registerElement("my-listbox", {
 //            console.log('detachedCallback');
         },
         attributeChangedCallback: function (name, prevValue, newValue) {
-            console.log("name:%s  prevValue:%s   newValue:%s", name, prevValue, newValue);
+//            console.log("name:%s  prevValue:%s   newValue:%s", name, prevValue, newValue);
         },
         attachedCallback: function () {
             this.obj = document.getElementById(this.id);
@@ -21,6 +21,7 @@ document.registerElement("my-listbox", {
             this.evt = new CustomEvent('xxxxx5', {
                 detail: {v: ""}
             }, {bubbles: true, cancelable: true});
+
 
 
             var ob = $(this.obj);
@@ -33,13 +34,18 @@ document.registerElement("my-listbox", {
             var header = this.callback + '_' + this.obj.id + '_expl';
             this.shadow_root = document.getElementById(this.id).createShadowRoot();
             this.shadow_root.innerHTML = '<style> @import "CSS/listbox.css" </style>\n\
-<input id="in" class="inp" type="text" value="" data-fn="0" data-id="0" data-old=""  placeholder="' + this.placeholder + '">\n\
+<input id="in" class="inp" type="text" value="" data-fn="0" data-id="0" data-old=""  placeholder="' + this.placeholder + '"/>\n\
+<button><img src="pic/edit_add_.png" alt=""/></button>\n\
+<button><img src="pic/save_.png" alt=""/></button>\n\
 <div id="div_list" class="div_list"></div>';
 
             var obInput = $(this.shadow_root.getElementById('in'));
             var divlist = $(this.shadow_root.getElementById('div_list'));
             divlist.css('width', ob.outerWidth());
             divlist.css('max-height', n_row * 21);
+
+            var cc = $(document.querySelectorAll('#' + this.id + '::shadow button'));
+            cc.attr('disabled', 'disabled');
             obInput.one('focus', {obj: this}, function (ev) {
                 var inp = $(this);
                 $(this).bind('keydown', function (event) {
@@ -115,9 +121,10 @@ document.registerElement("my-listbox", {
                     $.ajax({
                         type: "POST",
                         url: "Listboxx",
-                        data: "name=" + event.data.header + "&value=" + $(this).val(),
+                        data: "name=" + event.data.header + "&value=" + encodeURIComponent($(this).val()),
 //                        dataType: "text",
                         success: function (msg) {
+                            console.log('11');
                             var rg = /^([a-z_0-9.]{1,})\|([\s\S]*)/;
                             var r = rg.exec(msg);
                             try {
