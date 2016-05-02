@@ -44,7 +44,7 @@ public class Listboxx extends HttpServlet {
         PrintWriter out = response.getWriter();
         String[] s = request.getParameter("name").split("_");
 
-        String[] st = request.getParameter("value").toLowerCase().replaceAll("%", "\\\\%").split(" ");
+        String[] st = request.getParameter("value").replaceAll("%", "\\\\%").split(" ");
 
         StringBuilder sy = new StringBuilder();
         for (String sf : st) {
@@ -72,7 +72,7 @@ public class Listboxx extends HttpServlet {
             sbb.append("<table id='xxx'>");
             int n = 0;
             while (rs.next()) {
-                sbb.append(String.format("<tr class='tr'><td  data-fn='%1$S' data-id='%2$S'>%3$S</td></tr> ",
+                sbb.append(String.format("<tr class='tr'><td  data-fn='%1$s' data-id='%2$s'>%3$s</td></tr> ",
                         ++n, rs.getString("id"), rs.getString("name")));
             }
             sbb.append("</table>");
