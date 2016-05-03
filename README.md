@@ -1,2 +1,9 @@
 # Ex_ListBox
- Firefox: в about:config dom.webcomponents.enabled в true
+
+Пример создания пользовательского элемента "ListBox" с использованием shadow_root.
+Используется данный элемент для поиска.
+Поиск осуществляется при вводе каждого символа.
+Обращеие к серверу происходит с помощью aja.
+Возможно использование websoket.
+Ориентровано на использование Chrome, но будет также работать и в FireFox,
+при зменении в about:config dom.webcomponents.enabled в true
