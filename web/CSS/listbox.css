@@ -19,7 +19,7 @@ button{
 
 
 input{
-    width: calc(100% - 44px);
+    flex: 1 0 auto;
     border: none;
     outline:none;
     box-sizing:border-box;
@@ -40,6 +40,7 @@ input:active, textarea:active { outline:none; }
 }
 
 .div_list{
+    flex: 1 0 auto;
     cursor: default;
     overflow-y: auto;
     overflow-x: hidden;
