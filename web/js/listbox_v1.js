@@ -174,14 +174,14 @@ document.registerElement("my-listbox", {
                 divlist.unbind('hover').empty().css('display', 'none');
                 ev.data.obj.ready(inp.attr('data-id'), ev.data.obj.evt, callback);
             });
-            $(this.shadow_root.getElementById('xxx')).find('td').attr('onmouseover', this.obj.id + '.td_mouseover(this);');
+            $(this.shadow_root.getElementById('tbl')).find('td').attr('onmouseover', this.obj.id + '.td_mouseover(this);');
 
         },
         td_mouseover: function (p) {
             var inp = $(this.shadow_root.getElementById('in'));
             inp.val($(p).html());
             inp.attr("data-fn", $(p).attr("data-fn"));
-            var tbl = $(this.shadow_root.getElementById('xxx'));
+            var tbl = $(this.shadow_root.getElementById('tbl'));
             $(tbl).find('td').css("background", "none");
             $(p).css("background", "#ff0000");
         }

@@ -69,7 +69,7 @@ public class Listboxx extends HttpServlet {
     private StringBuilder list_names(ResultSet rs) {
         StringBuilder sbb = new StringBuilder();
         try {
-            sbb.append("<table id='xxx'>");
+            sbb.append("<table id='tbl'>");
             int n = 0;
             while (rs.next()) {
                 sbb.append(String.format("<tr class='tr'><td  data-fn='%1$s' data-id='%2$s'>%3$s</td></tr> ",
