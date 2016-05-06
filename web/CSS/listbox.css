@@ -40,7 +40,7 @@ input:active, textarea:active { outline:none; }
 }
 
 .div_list{
-    flex: 1 0 auto;
+    flex: 1 1 auto;
     cursor: default;
     overflow-y: auto;
     overflow-x: hidden;
@@ -60,10 +60,11 @@ table{
 table td{
     border: #dadada solid 1px;
     padding-left: 4px;
-    width: 100%;
+    flex: 1 1 auto;
+    /*width: 100%;*/
     white-space: nowrap; /*  Отменяем перенос текста */
-    /*    overflow-x:  hidden;  Обрезаем содержимое
-        text-overflow: ellipsis; Многоточие */
+    overflow-x:  hidden;  /*Обрезаем содержимое*/
+    /*text-overflow: ellipsis; Многоточие*/
 }
 
 

@@ -41,11 +41,13 @@ document.registerElement("my-listbox", {
 
             var obInput = $(this.shadow_root.getElementById('in'));
             var divlist = $(this.shadow_root.getElementById('div_list'));
-            divlist.css('width', ob.outerWidth());
+//            divlist.css('width', ob.outerWidth());
             divlist.css('max-height', n_row * 21);
 
             var cc = $(document.querySelectorAll('#' + this.id + '::shadow button'));
             cc.attr('disabled', 'disabled');
+            cc.find('img').css('opacity',0.6);
+
             obInput.one('focus', {obj: this}, function (ev) {
                 var inp = $(this);
                 $(this).bind('keydown', function (event) {
