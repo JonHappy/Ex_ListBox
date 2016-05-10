@@ -181,8 +181,7 @@ document.registerElement("my-listbox", {
             var inp = $(this.shadow_root.getElementById('in'));
             inp.val($(p).html());
             inp.attr("data-fn", $(p).attr("data-fn"));
-            var tbl = $(this.shadow_root.getElementById('tbl'));
-            $(tbl).find('td').css("background", "none");
+            $(this.shadow_root.getElementById('tbl')).find('td').css("background", "none");
             $(p).css("background", "#ff0000");
         }
     }
